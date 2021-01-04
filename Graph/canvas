@@ -1,0 +1,19 @@
+// Creates a canvas that can draw shapes and text
+		Canvas canvas = new Canvas(WINDOW_WIDTH, WINDOW_HEIGHT);
+		GraphicsContext gc = canvas.getGraphicsContext2D();
+		// Write some text
+		// Text is filled with the fill color
+		gc.setFill(Color.GREEN);
+		gc.setFont(new Font(30));
+		gc.fillText("Hello World!", 70, 170);
+		// Draw a line
+		// Lines use the stroke color
+		gc.setStroke(Color.BLUE);
+		gc.setLineWidth(2);
+		gc.strokeLine(40, 100, 250, 50);
+		// Draw a few circles
+		gc.setFill(Color.BLACK);
+		// The circles draw from the top left, so to center them, subtract the radius from each coordinate
+		gc.fillOval(40-15, 100-15, 30, 30);
+		gc.setFill(Color.RED);
+		gc.fillOval(250-15, 50-15, 30, 30);

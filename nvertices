@@ -1,0 +1,40 @@
+private	void DFSUtil1(int v, List<Vis>b,Graph g1,int res) { 
+        // Mark the current node as visited and print it 
+       b.get(v).visited=true;
+//        System.out.print(v+" "); 
+        // Recur for all the vertices 
+        // adjacent to this vertex 
+        for (Person x : g1.getAdjacentVerticesOf(b.get(v).p1)) { 
+        	int idx=-1;
+        	res++;
+        	for(int i =0;i<b.size();i++) {
+        		if((b.get(i).p1).compareTo(x)==1)idx=i;
+        	}
+        	if(idx!=-1)
+            if(!b.get(idx).visited) DFSUtil1(idx,b,g1,res); 
+        } 
+        
+  
+    } 
+
+  private  int NVertices(Graph g1,Person i) { 
+        // Mark all the vertices as not visited 
+
+    	// setting up the visited array for dfs
+    	List<Vis> b = new ArrayList<Vis>(g1.order());
+    	
+    		b.add(new Vis(i));
+ 
+    	
+    	
+    	int res=0;
+       for(int v = 0; v < g1.order(); ++v) { 
+            if(!(b.get(v).visited)) { 
+                // print all reachable vertices 
+                // from v 
+            	
+                DFSUtil1(v,b,g1,res); 
+               
+            } 
+        } return res;
+    } 
